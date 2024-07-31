@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Calculator</title>
+    <style>
+      form {
+        text-align: center;
+        margin-top: 30px;
+      }
+
+      input[type="button"] {
+        width: 65px;
+        height: 65px;
+      }
+
+      input[type="text"] {
+        width: 260px;
+        height: 30px;
+        font-size: 20px;
+        padding: 7px;
+        letter-spacing: 1px;
+      }
+    </style>
+  </head>
+
+  <!-- 
+	　＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+	 　ここから上は変更しないでください。 
+	 	＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+-->
+
+  <body>
+    <form name="calculator">
+      <input type="text" name="screen" />
+      <p>
+        <input type="button" onClick="clickCalculationBtn('7')" value="７" />
+        <input type="button" onClick="clickCalculationBtn('8')" value="８" />
+        <input type="button" onClick="clickCalculationBtn('9')" value="９" />
+        <input type="button" onClick="clickCalculationBtn('/')" value="／" />
+      </p>
+      <p>
+        <input type="button" onClick="clickCalculationBtn('4')" value="４" />
+        <input type="button" onClick="clickCalculationBtn('5')" value="５" />
+        <input type="button" onClick="clickCalculationBtn('6')" value="６" />
+        <input type="button" onClick="clickCalculationBtn('*')" value="＊" />
+      </p>
+      <p>
+        <input type="button" onClick="clickCalculationBtn('1')" value="１" />
+        <input type="button" onClick="clickCalculationBtn('2')" value="２" />
+        <input type="button" onClick="clickCalculationBtn('3')" value="３" />
+        <input type="button" onClick="clickCalculationBtn('-')" value="－" />
+      </p>
+      <p>
+        <input type="button" onClick="clickCalculationBtn('0')" value="０" />
+        <input type="button" onClick="clickCalculationBtn('C')" value="Ｃ" />
+        <input type="button" onClick="clickCalculationBtn('=')" value="＝" />
+        <input type="button" onClick="clickCalculationBtn('+')" value="＋" />
+      </p>
+    </form>
+
+    <script>
+      // ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+      // ↓↓↓↓↓↓ ここへプログラムを記述してください。↓↓↓↓↓↓
+      // 必要であればbodyタグに追記を行ってください。
+
+      function clickCalculationBtn(btn) {
+        let screen = document.querySelector("[name=screen]");
+
+        if (btn == "=") {
+          let val = screen.value;
+          screen.value = calculation(val);
+        } else if (btn == "C") {
+          screen.value = "";
+        } else {
+          screen.value += btn;
+        }
+      }
+
+      // ↑↑↑↑↑↑ ここへプログラムを記述してください。↑↑↑↑↑↑
+      // ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
+
+      // 引数に計算式を渡すと計算結果を返す関数
+      // 計算結果を表示されるときはこの関数を使用してください
+      // ※この関数の意味は理解する必要はありません
+      // ※この関数は変更しないでください。
+      function calculation(val) {
+        var res = Function("return (" + val + ");")();
+        return res;
+      }
+    </script>
+  </body>
+</html>
